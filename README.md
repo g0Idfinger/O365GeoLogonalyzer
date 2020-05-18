@@ -1,6 +1,6 @@
 # Office 365 Geo Login and Anomoly Parser.
 
-# Thanks goes out to [fireeye](https://github.com/fireeye/GeoLogonalyzer). I modified this to work for O365 logs and to provide me with City And State.
+### Thanks goes out to [fireeye](https://github.com/fireeye/GeoLogonalyzer). I modified this to work for O365 logs and to provide me with City And State.
 
 Pull CSV from O365 successful Logins. 
 
