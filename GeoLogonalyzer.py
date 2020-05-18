@@ -732,11 +732,11 @@ def main(args):
 
                     # MaxMind geoip DB lookup
                     geoip_db_match = geoip_db.city(ip_string)
-                    print(geoip_db_match)
+                    #print(geoip_db_match)
                     # Find Country from MaxMind geoip DB
                     try:
                         country = geoip_db_match.country.name
-                        print(country)
+                    #    print(country)
                     except AttributeError:
                         country = "None"
                     ip_cache[ip_string] = {"country":country}
@@ -744,7 +744,7 @@ def main(args):
                     # Find Coordinates from MaxMind geoip DB
                     try:
                         location = str(geoip_db_match.location.latitude) + ", " + str(geoip_db_match.location.longitude)
-                        print(location)
+                    #    print(location)
                     except AttributeError:
                         location = (0, 0)
                     ip_cache[ip_string]["location"] = location
@@ -752,7 +752,7 @@ def main(args):
                     # Find Subdivisions from MaxMind geoip DB
                     try:
                         subdivisions = geoip_db_match.city.name
-                        print(subdivisions)
+                    #    print(subdivisions)
                     except AttributeError:
                         subdivisions = "None"
                     ip_cache[ip_string]["subdivisions"] = subdivisions
@@ -761,7 +761,7 @@ def main(args):
                     try:
                         #dch_company = find_dch(ip_string, dch_dict)
                         dch_company = geoip_db_match.subdivisions.most_specific.iso_code
-                        print(dch_company)
+                    #    print(dch_company)
                         if dch_company == "":
                             dch_company = " "
                     except AttributeError:
@@ -943,68 +943,6 @@ if __name__ == "__main__":
            "                                     \\    /                   \\  |\n"
            "                                      \\  |                     \\_|\n"
            "                                       `-'\n\n\n")
-           "                                                                                                                   . . . . . . . . . . .        \n"                                                                                                    
-           "                                                                                         . . . . . .CACACACAGLGLGLGLGL . . . . . . . . . . . . . . . . . .   \n"                                                                                   
-           "                                                                           . . . . . . .CA . . .CACACA .GLGLGLGLGLGL . . . .NO . . . . .RU . . .RURURU . . . . . . . . .     \n"                                                                   
-           "                                                                   . . . . . . . . . .CACACA .CACA . . .GLGLGLGLGL . . . . . . . . . . .RU . .RU .RURURURURURURU . .RU . . . . .         \n"                                                       
-           "                                                           . .USUSUSUSUSCA .CACACACACACACACACACACA . .GLGLGLGLGL . . . . . . .NOFINORU . . .RURURURURURURURURURURURURURURURURURURU .RU      \n"                                                    
-           "                                                    RURURUUSUSUSUSUSUSCACACACACACACACACACA .CACACA .GLGLGLGL .ISISIS . . . .NOSEFIFIRURURURURURURURURURURURURURURURURURURURURURURURURURURURU    \n"                                                
-           "                                                 . .USUSUSUSUSUSCACACACACACACACACACA . .CA .CA . . .GLGL . . . . . . . . .NOSESEFIFIFIRURURURURURURURURURURURURURURURURURURURURURURURURURURURURU   \n"                                             
-           "                                             . . .USUS .USUSUSCACACACACACACACACA . . .CACACACA . . . . . . . . . . . . . .NONOSE .FIEERURURURURURURURURURURURURURURURURURURURURURURURURURURU .RU . . .    \n"                                      
-           "                                         . . .USUS . . . . .CACACACACACACACACACA . .CACACACA . . . . . . . . . . . . .GB . .DKSE .LVLVRURURURURURURURURURURURURURURURURURURURURURURURURU . . . .RURU . . .    \n"                                  
-           "                                     . . . . . . . . . . .CACACACACACACACACACACACACACACACACACA . . . . . . . . . . .IEGBGBNLDEDEPLPLBYBYRURURURURURURUKZKZRURURURURURURURURURURURUCNCNRURURURU . .RURU . . . .   \n"                               
-           "                                 . . . . . . . . . . . .CACACACACACACACACACACACACACACACACACACA . . . . . . . . . . . .GBGBNLDECZCZPLUAUAUAUARURURURU .RUKZKZKZKZRURURUMNMNMNMNMNRUMNCNCNCNRURU .RU . .RU . . . . .  \n"                            
-           "                           . . . . . . . . . . . . . . .USUSUSUSUSUSUSUSUSUSCACACACAUS . .CACA . . . . . . . . . . . .FRFRFRCHDESKSKROROUAUAUARURUKZKZKZKZKZKZKZKZKZCNCNMNMNMNMNMNMNCNCNCNCNCNCNRURU . . . . . . . . .    \n"                      
-           "                         . . . . . . . . . . . . . . .USUSUSUSUSUSUSUSUSUSUSCACAUSUSCACA . . . . . . . . . . . . . . . .FRFRITITBARSRORO .RURURURU .KZUZUZKZKZKZKZKZCNCNCNCNMNMNMNMNCNCNCNCNCNCNRU .JP . . . . . . . . . .   \n"                   
-           "                       . . . . . . . . . . . . . . .USUSUSUSUSUSUSUSUSUSUSUSUSUSUS . . . . . . . . . . . . . . . . .ESESES . .ITITMERSTR .TR .GEGEAZKZTMTMUZUZKZKGKGCNCNCNCNCNCNCNCNCNCNCNCNCNCNKP . .JP . . . . . . . . . .    \n"                
-           "                     . . . . . . . . . . . . . . .USUSUSUSUSUSUSUSUSUSUSUSUSUSUS . . . . . . . . . . . . . . . . .PTESESES .IT .ITITGR .TRTRTRTRTRAZ .TMTMTMTMTJKGCNCNCNCNCNCNCNCNCNCNCNCNCNCNCNKP . . .JP . . . . . . . . . .     \n"             
-           "                 . . . . . . . . . . . . . . . . .USUSUSUSUSUSUSUSUSUSUSUSUSUS . . . . . . . . . . . . . . . . . .PTESESDZDZDZTNIT .GR .TRTRTRTRTRIRIRIRIRIRTMTMAFTJCNCNCNCNCNCNCNCNCNCNCNCNCNCN .KR . .JPJP . . . . . . . . . .      \n"          
-           "               . . . . . . . . . . . . . . . . .USUSUSUSUSUSUSUSUSUSUSUSUSUS . . . . . . . . . . . . . . . . . . . .MAMADZDZDZTN . . . . . . .SYSYIQIRIRIRIRAFAFAFPKPKCNCNCNCNCNCNCNCNCNCNCNCNCN .KR .JPJP . . . . . . . . . . . .       \n"       
-           "             . . . . . . . . . . . . . . . . . . .MXMXMXUSUSUSUSUSUSUSUS . . . . . . . . . . . . . . . . . . . . . .MAMADZDZDZLYLY .LYLYEGEGEGSASAIQIRIRIRIRIRAFAFPKPKINCNCNCNCNCNCNCNCNCNCNCNCNCN . .JP . . . . . . . . . . . . . .      \n"      
-           "           . . . . . . . . . . . . . . . . . . . .MXMXMXMXMXUSUSUS . .US . . . . . . . . . . . . . . . . . . . .MAMADZDZDZDZDZLYLYLYLYLYEGEGEGSASASASA .IRIRIRAFPKPKPKININCNCNCNCNCNCNCNCNCNCNCNCNCN . . . . . . . . . . . . . . . . .     \n"     
-           "         . . . . . . . . . . . . . . . . . . . . .MXMXMXMXMX . . . . .US . . . . . . . . . . . . . . . . . . . .EHMRDZDZDZDZDZLYLYLYLYLYEGEGEGSASASASASA .IRIRIRPKPKININININNPNPBTINMMCNCNCNCNCNCNCN . . . . . . . . . . . . . . . . . .    \n"    
-           "       . . . . . . . . . . . . . . . . . . . . . .MX .MXMXMX . . . . . . . . . . . . . . . . . . . . . . . . .EHMRMRMLDZDZDZDZLYLYLYLYLYEGEGEGEGSASASASASAAEOM . .PKPKINININININBDBDMMCNCNCNCNCNCNCNTW . . . . . . . . . . . . . . . . . .   \n"   
-           "       . . . . . . . . . . . . . . . . . . . . . . .MXMXMX . .MXMX . .CU . . . . . . . . . . . . . . . . . . .MRMRMRMRMLDZDZDZNENETDLYLYSDSDSDSD .SASASASASAOM . . .INININININININBDMMMMCNVNCNCN . . . . . . . . . . . . . . . . . . . . . .  \n"  
-           "     . . . . . . . . . . . . . . . . . . . . . . . .MXMXMXMXMXMX . . . . .DO . . . . . . . . . . . . . . . . .MRMRMRMRMLMLDZNENENETDTDTDSDSDSDSDSDSASASASASAOM . . . .INININININ . .MMMMTHVNVNCN . . . . . . . . . . . . . . . . . . . . . .    \n"
-           "     . . . . . . . . . . . . . . . . . . . . . . . . . .MXMXGTBZ . . . . . . . . . . . . . . . . . . . . . . .MRMRMRMRMLMLNENENENETDTDTDSDSDSDSDER .YEYEYEYE . . . . . .INININ . . . .MMMMTHLAVN . . .PH . . . . . . . . . . . . . . . . . .    \n"
-           "     . . . . . . . . . . . . . . . . . . . . . . . . . . . .GTSVHN . . . . . . . . . . . . . . . . . . . . .SNSNMLMLMLBFBFNGNENENETDTDTDSDSDSDSDETETYEYEYE . . . . . . .INININ . . . . .MMTHLAVN . . . . . . . . . . . . . . . . . . . . . . .  \n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .NI . . .VE . . . . . . . . . . . . . . . . . .GWGNGNBFBFBFNGNGNGNGTDTDTDSDSDSDSDETETSO .SO . . . . . . . .ININ . . . . .MM .KHVN . . . . .PH . . . . . . . . . . . . . . . . .  \n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CRPAPACOVEVEVEVE . . . . . . . . . . . . . . .GNSLGNCICIGHNGNGNGCMTDTDCFSSSSSSSSETETSOSOSO . . . . . . . .INLK . . . . . . . .VN . . . . .PH . . . . . . . . . . . . . . . . .  \n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .COCOVEVEVEVEGY . . . . . . . . . . . . . . .SLLRCIGHGHNGNGCMCMCFCFCFSSSSSSSSETETETETSO . . . . . . . . . . . . . . . .MY . . . . .MY .PH . . . . . . . . . . . . . . . . . .\n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .COCOCOCOVEVEGYSRFR . . . . . . . . . . . . . .LRCI . . .NGCMCMCFCFCFCDCDSSSSETETETSO . . . . . . . . . . . . . . . .ID .MY . . .MYMY . . . . . . . . . . . . . . . . . . . .\n"
-           " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .COCOCOCOVEBRGYSRBRBR . . . . . . . . . . . . . . . . . . .GQGACGCDCDCDCDUGUGKEKESOSO . . . . . . . . . . . . . . . . .IDMY . .MYMYID . . . . . . . . . . . . . . . . . . . .\n"
-           " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .ECECCOCOBRBRBRBRBRBRBRBR . . . . . . . . . . . . . . . . . .GAGACGCDCDCDCDUGUGKEKESO . . . . . . . . . . . . . . . . . .IDID .IDIDIDIDID . . .ID . . . . . . . . . . . . . . .\n"
-           " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .ECECPEPEBRBRBRBRBRBRBRBRBRBR . . . . . . . . . . . . . . . .GAGACGCDCDCDCDBITZKEKE . . . . . . . . . . . . . . . . . . . .IDID .IDID .ID . . .IDIDIDPG . . . . . . . . . . . .\n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PEPEPEBRBRBRBRBRBRBRBRBRBRBRBRBR . . . . . . . . . . . . . . .AOAOCDCDCDCDTZTZTZ . . . . . . . . . . . . . . . . . . . . . .ID . . . . . . . . . .IDPGPGPGPG . . . . . . . . .\n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PEPEBRBRBRBRBRBRBRBRBRBRBRBRBR . . . . . . . . . . . . . . .AOAOAOAOCDCDZMTZTZ . . . . . . . . . . . . . . . . . . . . . . .IDIDID . . . . . . .IDPGPG . . . . . . . . . .  \n"
-           "   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PEPEPEBOBOBRBRBRBRBRBRBRBRBRBR . . . . . . . . . . . . . . .AOAOAOAOCDZMZMMWTZMZ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PG . . . . . . . . .  \n"
-           "     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PEPEPEBOBOBRBRBRBRBRBRBRBR . . . . . . . . . . . . . . . .AOAOAOAOZMZMZMMZMZMZ . .MG . . . . . . . . . . . . . . . . . . . . . . . . . .AUAU . . . . . . . . . . . . . .  \n"
-           "     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PEPEPEBOBOBOBRBRBRBRBRBRBR . . . . . . . . . . . . . . . .AOAOAOAOZMZMMZMZMZMZ .MGMG . . . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAU .AUAU . . . . . . . . . . .  \n"
-           "     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .PEBOBOBOBOBRBRBRBRBRBR . . . . . . . . . . . . . . . .AOAOAOAOZMZWZWMZMZ .MGMGMG . . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAUAUAUAUAU . . . . . . . . . .    \n"
-           "       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .BOBOPYPYBRBRBRBRBRBR . . . . . . . . . . . . . . . .NANANABWBWZWMZMZ . .MGMG . . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAUAUAUAUAUAU . . . . . . . . . .    \n"
-           "       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .BOARPYPYPYBRBRBRBR . . . . . . . . . . . . . . . . . .NANABWBWBWMZMZ . .MGMG . . . . . . . . . . . . . . . . . . . .AUAUAUAUAUAUAUAUAUAUAUAU . . . . . . . . . .    \n"
-           "         . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARARPYBRBRBR . . . . . . . . . . . . . . . . . . .NANABWBWZAMZ . . .MG . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAUAUAUAUAUAUAUAU . . . . . . . . .      \n"
-           "           . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARARPYBRBR . . . . . . . . . . . . . . . . . . . .NANAZAZAZAZA . . . . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAUAUAUAUAUAUAUAUAU . . . . . . . .        \n"
-           "             . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARARARBRBR . . . . . . . . . . . . . . . . . . . .ZAZAZALSZA . . . . . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAUAUAUAUAUAUAUAU . . . . . . . .          \n"
-           "               . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARARUYBR . . . . . . . . . . . . . . . . . . . .ZAZAZAZA . . . . . . . . . . . . . . . . . . . . . . . . .AUAUAUAU . .AUAUAUAUAUAU . . . . . . . .            \n"
-           "                 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARARAR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .AUAUAUAUAU . . . . . .NZ .              \n"
-           "                   . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARARAR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .AUAUAUAU . . . . . .NZNZ                \n"
-           "                     . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARARAR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .AUAU . . . . . .NZNZ                    \n"
-           "                       . . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLARAR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .AU . . . . .NZNZ .                      \n"
-           "                         . . . . . . . . . . . . . . . . . . . . . . . . . . . .CLCLAR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .NZNZ . .                        \n"
-           "                               . . . . . . . . . . . . . . . . . . . . . . . . . .CLAR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                            \n"
-           "                                   . . . . . . . . . . . . . . . . . . . . . . . .CLCLAR .FK . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                \n"
-           "                                       . . . . . . . . . . . . . . . . . . . . . . . .CLCL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                    \n"
-           "                                           . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                        \n"
-           "                                               . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                            \n"
-           "                                                   . . . . . . . . . . . . . . . . . . . . . . .AQ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                                                  \n"
-           "                                                       . . . . . . . . . . . . . . . . . . . . .AQ . . . . . . . . . . . . . . . . . . .AQAQAQAQAQ .AQAQAQAQAQAQAQAQAQAQAQAQAQ . . . . . .                                                      \n"
-           "                                                               . . . . . . . . . . . . .AQ . . .AQAQAQ . . . . . . .AQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQ . .                                                            \n"
-           "                                                                       . . . . .AQAQAQAQAQAQAQAQAQAQAQ . . . . . .AQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQ . .                                                                    \n"
-           "                                                                               . .AQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQ . .                                                                            \n"
-           "                                                                                                  AQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQAQ\n"
-    sys.stderr.write(art)
-
     # Welcome Message
     sys.stderr.write("\n   Thank you for using GeoLogonAnalyzer.py, created by David Pany at"
                      " FireEye, Inc.\n      Version 1.01\n\n")
