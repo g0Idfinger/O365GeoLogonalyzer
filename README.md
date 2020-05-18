@@ -80,7 +80,7 @@ The output.csv file will include the following column headers:
 ### MaxMind Attribution and Credit
 
     This product includes GeoLite2 data created by MaxMind, available from
-    http://www.maxmind.com provided under the Creative Commons Attribution-
+    [http://www.maxmind.com](http://www.maxmind.com) provided under the Creative Commons Attribution-
     ShareAlike 4.0 International License. Copyright (C) 2012-2018 Maxmind, Inc.
     Copyright (C) 2012-2018 Maxmind, Inc.
 
