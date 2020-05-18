@@ -21,6 +21,12 @@ you may not already have:
 A pip requirements.txt is provided for your convenience.
 
     pip install -r requirements.txt
+    
+### MaxMind Database downloads
+Create an account and download the GZIP for the following databases:
+    1. [GeoLit2 ASN](https://www.maxmind.com/en/accounts/250539/geoip/downloads)
+    2. [GeoLite2 City](https://www.maxmind.com/en/accounts/250539/geoip/downloads)
+Extract the .mmdb to the same folder as the script.
 
 # Execution Syntax
 The following command will parse the input.csv shown above and save results to output.csv:
@@ -58,3 +64,40 @@ The output.csv file will include the following column headers:
 | Miles Diff | Difference in miles between two associated coordinates of two compared IP addresses |
 | Seconds Diff | Difference in time between two compared authentications |
 | Miles/Hour | Speed required to physically move from 1st logon location to 2nd logon location by time difference between compared logons. Miles Diff / Seconds Diff |
+
+-----
+# Licenses
+### GeoLogonalyzer License: 
+    This product is licensed under the Apache License, Version 2.0 and is
+    Copyright <C> 2018 FireEye, Inc. You may obtain a copy of the License
+    at: http://www.apache.org/licenses/LICENSE-2.0. Unless required by
+    applicable law or agreed to in writing, software distributed under the
+    License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+    CONDITIONS OF ANY KIND, either express or implied. See the License for
+    the specific language governing permissions and limitations under the
+    License.
+
+### MaxMind Attribution and Credit
+
+    This product includes GeoLite2 data created by MaxMind, available from
+    http://www.maxmind.com provided under the Creative Commons Attribution-
+    ShareAlike 4.0 International License. Copyright (C) 2012-2018 Maxmind, Inc.
+    Copyright (C) 2012-2018 Maxmind, Inc.
+
+### client9 Attribution and Credit
+
+    This product retrieves and operates on data including datacenter
+    categorizations retrieved from https://github.com/client9/ipcat/ which
+    are Copyright <C> 2018 Client9. This data comes with ABSOLUTELY NO
+    WARRANTY; for details go to:
+            https://raw.githubusercontent.com/client9/ipcat/master/LICENSE
+    The data is free software, and you are welcome to redistribute it under
+    certain conditions. See LICENSE for details.
+
+# Limitations
+1. All GeoIP lookups are dependent on the accuracy of MaxMind database values
+2. All DCH lookups are dependent on the accuracy of open source data
+3. VPN or network tunneling services may skew results
+
+# Credits
+GeoLogonalyzer was created by David Pany. The project was inspired by research performed by FireEye's data science team including Christopher Schmitt, Seth Summersett, Jeff Johns, Alexander Mulfinger, and more whose work supports live remote access processing in FireEye Helix - https://www.fireeye.com/solutions/helix.html. The "Logonalyzer" name was originally created by @0xF2EDCA5A.
