@@ -176,7 +176,6 @@ try:
 except ImportError:
     sys.stderr.write("Please install the geoip dependency:\n\tpip install geoip2>=2.9.0\n")
     sys.exit()
-
 # Constants
 RESERVED_IP_COORDINATES = (0, 0)
 FAR_DISTANCE = 500
@@ -308,7 +307,7 @@ def get_csv_details(line):
     time = datetime.strptime(line_list[0].strip(), '%m/%d/%Y %I:%M:%S %p') # ex. 2017-05-15 13:56:23
     user = line_list[1].strip()
     ip_string = line_list[2].strip()
-
+    print(ip_string)
     # Try to parse hostname and client which are optional
     try:
         hostname = line_list[3].strip()
@@ -369,7 +368,7 @@ def calculate_logon_differences(user_list):
     difference_dict["second_location"] = user_list[1]["location"]
     difference_dict["location_miles_diff"] = vincenty(difference_dict["first_location"],
                                                       difference_dict["second_location"]).miles
-
+    print(difference_dict["location_miles_diff"])
     # Add anomaly if distance is far
     if difference_dict["location_miles_diff"] >= FAR_DISTANCE:
         difference_dict["anomalies"].add("DISTANCE")
@@ -400,8 +399,18 @@ def calculate_logon_differences(user_list):
     difference_dict["second_country"] = user_list[1]["country"]
 
     # Find subdivision such as state, territory, city, etc. registered to source IP
-    difference_dict["first_subdivision"] = user_list[0]["subdivisions"]
-    difference_dict["second_subdivision"] = user_list[1]["subdivisions"]
+    
+    if user_list[0]["subdivisions"] is not None:
+    	difference_dict["first_subdivision"] = user_list[0]["subdivisions"].encode('utf-8',errors='replace')
+    else:
+    	difference_dict["first_subdivision"] = user_list[0]["subdivisions"]	
+    print(difference_dict["first_subdivision"], "1st")
+
+    if user_list[1]["subdivisions"] is not None:
+    	difference_dict["second_subdivision"] = user_list[1]["subdivisions"].encode('utf-8',errors='replace')
+    else:
+    	difference_dict["second_subdivision"] = user_list[1]["subdivisions"]
+    print(difference_dict["second_subdivision"], "2nd")
 
     # Find source IP addresses
     difference_dict["first_ip"] = user_list[0]["ip"]
@@ -480,7 +489,7 @@ def diff_dict_to_list(logon_diff_dict):
              str(logon_diff_dict.get("location_miles_diff", "")),
              str(logon_diff_dict.get("time_seconds_diff", "")),
              str(logon_diff_dict.get("miles_per_hour", ""))])
-
+    print(diff_dict_to_list(logon_diff_dict))
 def  reserved_ip_check(ip_string):
     """determine if IP address in RFC1918 or reserved"""
 
